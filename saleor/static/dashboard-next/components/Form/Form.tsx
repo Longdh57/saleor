@@ -8,6 +8,7 @@ export interface FormProps<T extends {}> {
       hasChanged: boolean;
       errors: { [key: string]: string };
       change(event: React.ChangeEvent<any>);
+      reset();
       submit(event?: React.FormEvent<any>);
     }
   ) => React.ReactElement<any>);
@@ -109,6 +110,11 @@ class FormComponent<T extends {} = {}> extends React.Component<
     }
   };
 
+  handleReset = () =>
+    this.setState({
+      fields: this.state.initial
+    });
+
   handleSubmit = (event?: React.FormEvent<any>) => {
     const { onSubmit } = this.props;
     if (event) {
@@ -139,6 +145,7 @@ class FormComponent<T extends {} = {}> extends React.Component<
           )
         : {},
       hasChanged,
+      reset: this.handleReset,
       submit: this.handleSubmit
     });
 

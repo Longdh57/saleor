@@ -33,7 +33,6 @@ interface ProductVariantCreatePageProps {
   loading: boolean;
   product: ProductVariantCreateData_product;
   saveButtonBarState: ConfirmButtonTransitionState;
-  onBack: () => void;
   onSubmit: (data: FormData) => void;
   onVariantClick: (variantId: string) => void;
 }
@@ -59,7 +58,6 @@ const ProductVariantCreatePage = decorate<ProductVariantCreatePageProps>(
     header,
     product,
     saveButtonBarState,
-    onBack,
     onSubmit,
     onVariantClick
   }) => {
@@ -78,14 +76,14 @@ const ProductVariantCreatePage = decorate<ProductVariantCreatePageProps>(
     };
     return (
       <Container width="md">
-        <PageHeader title={header} onBack={onBack} />
+        <PageHeader title={header} back={true} />
         <Form
           initial={initialForm}
           errors={formErrors}
           onSubmit={onSubmit}
           key={product ? JSON.stringify(product) : "noproduct"}
         >
-          {({ change, data, errors, hasChanged, submit }) => {
+          {({ change, data, errors, hasChanged, reset, submit }) => {
             return (
               <>
                 <div className={classes.root}>
@@ -132,7 +130,7 @@ const ProductVariantCreatePage = decorate<ProductVariantCreatePageProps>(
                     save: i18n.t("Save variant")
                   }}
                   state={saveButtonBarState}
-                  onCancel={onBack}
+                  onCancel={reset}
                   onSave={submit}
                 />
               </>

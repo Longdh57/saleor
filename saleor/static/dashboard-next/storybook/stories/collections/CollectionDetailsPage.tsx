@@ -20,7 +20,6 @@ const props: CollectionDetailsPageProps = {
   collection,
   disabled: false,
   isFeatured: true,
-  onBack: () => undefined,
   onCollectionRemove: () => undefined,
   onImageDelete: () => undefined,
   onImageUpload: () => undefined,

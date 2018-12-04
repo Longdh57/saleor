@@ -24,7 +24,6 @@ interface ProductVariantPageProps {
   loading?: boolean;
   placeholderImage?: string;
   header: string;
-  onBack();
   onDelete();
   onSubmit(data: any);
   onImageSelect(id: string);
@@ -52,7 +51,6 @@ const ProductVariantPage = decorate<ProductVariantPageProps>(
     placeholderImage,
     saveButtonBarState,
     variant,
-    onBack,
     onDelete,
     onImageSelect,
     onSubmit,
@@ -74,7 +72,7 @@ const ProductVariantPage = decorate<ProductVariantPageProps>(
         {(isImageSelectModalActive, { toggle: toggleImageSelectModal }) => (
           <>
             <Container width="md">
-              <PageHeader title={header} onBack={onBack} />
+              <PageHeader title={header} back={true} />
               <Form
                 initial={{
                   attributes:
@@ -99,7 +97,7 @@ const ProductVariantPage = decorate<ProductVariantPageProps>(
                 onSubmit={onSubmit}
                 key={variant ? JSON.stringify(variant) : "novariant"}
               >
-                {({ change, data, errors, hasChanged, submit }) => (
+                {({ change, data, errors, hasChanged, reset, submit }) => (
                   <>
                     <div className={classes.root}>
                       <div>
@@ -159,7 +157,7 @@ const ProductVariantPage = decorate<ProductVariantPageProps>(
                     <SaveButtonBar
                       disabled={loading || !hasChanged}
                       state={saveButtonBarState}
-                      onCancel={onBack}
+                      onCancel={reset}
                       onDelete={onDelete}
                       onSave={submit}
                     />

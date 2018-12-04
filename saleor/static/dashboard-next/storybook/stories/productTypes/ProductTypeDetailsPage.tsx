@@ -15,7 +15,6 @@ const props: ProductTypeDetailsPageProps = {
   onAttributeAdd: () => undefined,
   onAttributeDelete: () => undefined,
   onAttributeUpdate: () => undefined,
-  onBack: () => undefined,
   onDelete: () => undefined,
   onSubmit: () => undefined,
   pageTitle: productType.name,

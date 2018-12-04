@@ -53,7 +53,6 @@ interface ProductUpdateProps {
   onVariantShow: (id: string) => () => void;
   onImageDelete: (id: string) => () => void;
   onAttributesEdit: () => void;
-  onBack?();
   onDelete();
   onImageEdit?(id: string);
   onImageReorder?(event: { oldIndex: number; newIndex: number });
@@ -99,7 +98,6 @@ export const ProductUpdate = decorate<ProductUpdateProps>(
     saveButtonBarState,
     variants,
     onAttributesEdit,
-    onBack,
     onDelete,
     onImageDelete,
     onImageEdit,
@@ -186,10 +184,10 @@ export const ProductUpdate = decorate<ProductUpdateProps>(
 
     return (
       <Form onSubmit={onSubmit} errors={userErrors} initial={initialData}>
-        {({ change, data, errors, hasChanged, submit }) => (
+        {({ change, data, errors, hasChanged, reset, submit }) => (
           <>
             <Container width="md">
-              <PageHeader title={header} onBack={onBack} />
+              <PageHeader title={header} back={true} />
               <div className={classes.root}>
                 <div>
                   <ProductDetailsForm
@@ -271,7 +269,7 @@ export const ProductUpdate = decorate<ProductUpdateProps>(
                 </div>
               </div>
               <SaveButtonBar
-                onCancel={onBack}
+                onCancel={reset}
                 onDelete={onDelete}
                 onSave={submit}
                 state={saveButtonBarState}

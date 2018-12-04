@@ -32,18 +32,17 @@ export interface CategoryCreatePageProps {
   disabled: boolean;
   saveButtonBarState: ConfirmButtonTransitionState;
   onSubmit(data: FormData);
-  onBack();
 }
 const decorate = withStyles({});
 
 export const CategoryCreatePage = decorate<CategoryCreatePageProps>(
-  ({ disabled, onSubmit, onBack, errors: userErrors, saveButtonBarState }) => {
+  ({ disabled, onSubmit, errors: userErrors, saveButtonBarState }) => {
     return (
       <Form onSubmit={onSubmit} initial={initialData} errors={userErrors}>
-        {({ data, change, errors, submit, hasChanged }) => (
+        {({ data, change, errors, submit, reset, hasChanged }) => (
           <>
             <Container width="md">
-              <PageHeader title={i18n.t("Add Category")} onBack={onBack} />
+              <PageHeader title={i18n.t("Add Category")} back={true} />
               <div>
                 <CategoryDetailsForm
                   disabled={disabled}
@@ -65,7 +64,7 @@ export const CategoryCreatePage = decorate<CategoryCreatePageProps>(
                   disabled={disabled}
                 />
                 <SaveButtonBar
-                  onCancel={onBack}
+                  onCancel={reset}
                   onSave={submit}
                   labels={{
                     save: i18n.t("Save category")

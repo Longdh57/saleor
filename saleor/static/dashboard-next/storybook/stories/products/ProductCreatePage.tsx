@@ -20,7 +20,6 @@ storiesOf("Views / Products / Create product", module)
       productTypes={productTypes}
       categories={[product.category]}
       onAttributesEdit={undefined}
-      onBack={() => undefined}
       onSubmit={() => undefined}
       saveButtonBarState="default"
     />
@@ -35,7 +34,6 @@ storiesOf("Views / Products / Create product", module)
       productTypes={productTypes}
       categories={[product.category]}
       onAttributesEdit={undefined}
-      onBack={() => undefined}
       onSubmit={() => undefined}
       saveButtonBarState="default"
     />

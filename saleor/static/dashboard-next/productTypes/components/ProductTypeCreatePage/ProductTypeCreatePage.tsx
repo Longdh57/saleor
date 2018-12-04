@@ -27,7 +27,6 @@ export interface ProductTypeCreatePageProps {
   disabled: boolean;
   pageTitle: string;
   saveButtonBarState: ConfirmButtonTransitionState;
-  onBack: () => void;
   onSubmit: (data: ProductTypeForm) => void;
 }
 
@@ -49,7 +48,6 @@ const ProductTypeCreatePage = decorate<ProductTypeCreatePageProps>(
     errors,
     pageTitle,
     saveButtonBarState,
-    onBack,
     onSubmit
   }) => {
     const formInitialData: ProductTypeForm = {
@@ -61,9 +59,9 @@ const ProductTypeCreatePage = decorate<ProductTypeCreatePageProps>(
     };
     return (
       <Form errors={errors} initial={formInitialData} onSubmit={onSubmit}>
-        {({ change, data, hasChanged, submit }) => (
+        {({ change, data, hasChanged, reset, submit }) => (
           <Container width="md">
-            <PageHeader title={pageTitle} onBack={onBack} />
+            <PageHeader title={pageTitle} back={true} />
             <div className={classes.root}>
               <div>
                 <ProductTypeDetails
@@ -89,7 +87,7 @@ const ProductTypeCreatePage = decorate<ProductTypeCreatePageProps>(
               </div>
             </div>
             <SaveButtonBar
-              onCancel={onBack}
+              onCancel={reset}
               onSave={submit}
               disabled={disabled || !hasChanged}
               state={saveButtonBarState}

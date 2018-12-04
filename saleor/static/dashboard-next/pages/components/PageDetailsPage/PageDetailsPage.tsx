@@ -29,7 +29,6 @@ export interface PageDetailsPageProps {
   disabled?: boolean;
   title?: string;
   saveButtonBarState: ConfirmButtonTransitionState;
-  onBack?();
   onDelete?();
   onSubmit(data: PageInput);
 }
@@ -57,7 +56,6 @@ const PageDetailsPage = decorate<PageDetailsPageProps>(
     page,
     title,
     saveButtonBarState,
-    onBack,
     onDelete,
     onSubmit
   }) => (
@@ -67,12 +65,12 @@ const PageDetailsPage = decorate<PageDetailsPageProps>(
       initial={page ? page : defaultPage}
       onSubmit={onSubmit}
     >
-      {({ change, data, errors, hasChanged, submit }) => (
+      {({ change, data, errors, hasChanged, reset, submit }) => (
         <Toggle>
           {(opened, { toggle: togglePageDeleteDialog }) => (
             <Container width="md">
               <>
-                <PageHeader onBack={onBack} title={title} />
+                <PageHeader back={true} title={title} />
                 <div className={classes.root}>
                   <div>
                     <PageContent
@@ -97,7 +95,7 @@ const PageDetailsPage = decorate<PageDetailsPageProps>(
                 <SaveButtonBar
                   disabled={disabled || !onSubmit || !hasChanged}
                   state={saveButtonBarState}
-                  onCancel={onBack}
+                  onCancel={reset}
                   onDelete={togglePageDeleteDialog}
                   onSave={submit}
                 />

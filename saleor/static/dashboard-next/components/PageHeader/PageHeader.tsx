@@ -16,7 +16,7 @@ const decorate = withStyles(
 );
 
 interface PageHeaderProps {
-  back: boolean;
+  back?: boolean;
   className?: string;
   title?: string;
 }

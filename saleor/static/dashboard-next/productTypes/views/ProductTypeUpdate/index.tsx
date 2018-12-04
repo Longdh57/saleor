@@ -269,7 +269,6 @@ export const ProductTypeUpdate: React.StatelessComponent<
                                   )
                                 )
                               }
-                              onBack={() => navigate(productTypeListUrl)}
                               onDelete={() =>
                                 navigate(productTypeRemoveUrl(id))
                               }

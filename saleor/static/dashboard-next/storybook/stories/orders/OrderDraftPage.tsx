@@ -20,7 +20,6 @@ const props: OrderDraftPageProps = {
   disabled: false,
   fetchUsers: () => undefined,
   fetchVariants: () => undefined,
-  onBack: () => undefined,
   onBillingAddressEdit: undefined,
   onCustomerEdit: () => undefined,
   onDraftFinalize: () => undefined,

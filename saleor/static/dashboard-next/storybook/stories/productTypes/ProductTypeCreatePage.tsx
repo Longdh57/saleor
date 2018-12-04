@@ -11,7 +11,6 @@ const props: ProductTypeCreatePageProps = {
   defaultWeightUnit: "kg" as WeightUnitsEnum,
   disabled: false,
   errors: [],
-  onBack: () => undefined,
   onSubmit: () => undefined,
   pageTitle: "Create product type",
   saveButtonBarState: "default"

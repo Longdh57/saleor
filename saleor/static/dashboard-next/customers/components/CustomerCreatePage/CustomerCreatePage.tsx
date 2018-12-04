@@ -25,7 +25,6 @@ export interface CustomerCreatePageProps {
   disabled: boolean;
   errors: UserError[];
   saveButtonBar: ConfirmButtonTransitionState;
-  onBack: () => void;
   onSubmit: (data: CustomerCreatePageFormData) => void;
 }
 
@@ -53,19 +52,11 @@ const decorate = withStyles(theme => ({
   }
 }));
 const CustomerCreatePage = decorate<CustomerCreatePageProps>(
-  ({
-    classes,
-    countries,
-    disabled,
-    errors,
-    saveButtonBar,
-    onBack,
-    onSubmit
-  }) => (
+  ({ classes, countries, disabled, errors, saveButtonBar, onSubmit }) => (
     <Form initial={initialForm} onSubmit={onSubmit} errors={errors}>
-      {({ change, data, errors: formErrors, hasChanged, submit }) => (
+      {({ change, data, errors: formErrors, hasChanged, reset, submit }) => (
         <Container width="md">
-          <PageHeader title={i18n.t("Add customer")} onBack={onBack} />
+          <PageHeader title={i18n.t("Add customer")} back={true} />
           <div className={classes.root}>
             <div>
               <CustomerCreateDetails
@@ -95,7 +86,7 @@ const CustomerCreatePage = decorate<CustomerCreatePageProps>(
             disabled={disabled || !hasChanged}
             state={saveButtonBar}
             onSave={submit}
-            onCancel={onBack}
+            onCancel={reset}
           />
         </Container>
       )}

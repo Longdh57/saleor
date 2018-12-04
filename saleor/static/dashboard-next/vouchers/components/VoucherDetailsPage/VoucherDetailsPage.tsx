@@ -62,7 +62,6 @@ interface VoucherDetailsPageProps {
   fetchCategories?();
   fetchProducts?();
   fetchShipping?();
-  onBack?();
   onVoucherDelete?();
 }
 
@@ -95,7 +94,6 @@ const VoucherDetailsPage = decorate<VoucherDetailsPageProps>(
     productSearchResults,
     shippingSearchResults,
     voucher,
-    onBack,
     onVoucherDelete
   }) => (
     <Toggle>
@@ -137,7 +135,7 @@ const VoucherDetailsPage = decorate<VoucherDetailsPageProps>(
             }}
             key={voucher ? CRC.str(JSON.stringify(voucher)) : "loading"}
           >
-            {({ change, data, hasChanged, submit }) => (
+            {({ change, data, hasChanged, reset, submit }) => (
               <Container width="md">
                 <PageHeader
                   title={
@@ -147,7 +145,7 @@ const VoucherDetailsPage = decorate<VoucherDetailsPageProps>(
                         : createVoucherName(voucher, currency)
                       : undefined
                   }
-                  onBack={onBack}
+                  back={true}
                 />
                 <div className={classes.root}>
                   <div>
@@ -184,7 +182,7 @@ const VoucherDetailsPage = decorate<VoucherDetailsPageProps>(
                   </div>
                 </div>
                 <SaveButtonBar
-                  onCancel={onBack}
+                  onCancel={reset}
                   onDelete={toggleVoucherDeleteDialog}
                   onSave={submit}
                   state={saveButtonBarState}

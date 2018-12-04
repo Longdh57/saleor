@@ -9,7 +9,6 @@ import Decorator from "../../Decorator";
 
 const props: StaffDetailsPageProps = {
   disabled: false,
-  onBack: () => undefined,
   onDelete: () => undefined,
   onSubmit: () => undefined,
   permissions,

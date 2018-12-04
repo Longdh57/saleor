@@ -8,7 +8,6 @@ import { page } from "../../../pages/fixtures";
 import Decorator from "../../Decorator";
 
 const callbacks: PageDetailsPageProps = {
-  onBack: () => undefined,
   onSubmit: () => undefined,
   saveButtonBarState: "default"
 };

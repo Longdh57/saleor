@@ -107,7 +107,6 @@ export const CustomerDetailsView: React.StatelessComponent<
                               )}
                               saveButtonBar={formTransitionState}
                               onAddressManageClick={() => undefined} // TODO: add address management #3173
-                              onBack={() => navigate(customerListUrl)}
                               onRowClick={id => navigate(orderUrl(id))}
                               onSubmit={formData =>
                                 updateCustomer({

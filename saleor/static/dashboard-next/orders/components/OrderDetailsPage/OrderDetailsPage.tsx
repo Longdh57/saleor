@@ -29,7 +29,6 @@ export interface OrderDetailsPageProps {
     code: string;
     label: string;
   }>;
-  onBack();
   onBillingAddressEdit();
   onFulfillmentCancel(id: string);
   onFulfillmentTrackingNumberUpdate(id: string);
@@ -66,7 +65,6 @@ const OrderDetailsPage = decorate<OrderDetailsPageProps>(
     classes,
     order,
     onOrderCancel,
-    onBack,
     onBillingAddressEdit,
     onFulfillmentCancel,
     onFulfillmentTrackingNumberUpdate,
@@ -90,7 +88,7 @@ const OrderDetailsPage = decorate<OrderDetailsPageProps>(
         <PageHeader
           className={classes.header}
           title={maybe(() => order.number) ? "#" + order.number : undefined}
-          onBack={onBack}
+          back={true}
         >
           {canCancel && (
             <CardMenu

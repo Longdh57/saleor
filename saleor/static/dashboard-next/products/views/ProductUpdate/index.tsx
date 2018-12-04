@@ -156,9 +156,6 @@ export const ProductUpdate: React.StatelessComponent<ProductUpdateProps> = ({
                                   productTypeUrl(data.product.productType.id)
                                 )
                               }
-                              onBack={() => {
-                                navigate(productListUrl());
-                              }}
                               onDelete={() => navigate(productRemoveUrl(id))}
                               onProductShow={() => {
                                 if (product) {

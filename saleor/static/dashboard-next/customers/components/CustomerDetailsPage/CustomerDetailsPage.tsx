@@ -26,7 +26,6 @@ export interface CustomerDetailsPageProps {
   disabled: boolean;
   errors: UserError[];
   saveButtonBar: ConfirmButtonTransitionState;
-  onBack: () => void;
   onSubmit: (data: CustomerDetailsPageFormData) => void;
   onViewAllOrdersClick: () => void;
   onRowClick: (id: string) => void;
@@ -48,7 +47,6 @@ const CustomerDetailsPage = decorate<CustomerDetailsPageProps>(
     disabled,
     errors,
     saveButtonBar,
-    onBack,
     onSubmit,
     onViewAllOrdersClick,
     onRowClick,
@@ -64,9 +62,9 @@ const CustomerDetailsPage = decorate<CustomerDetailsPageProps>(
       }}
       onSubmit={onSubmit}
     >
-      {({ change, data, errors: formErrors, hasChanged, submit }) => (
+      {({ change, data, errors: formErrors, hasChanged, reset, submit }) => (
         <Container width="md">
-          <PageHeader onBack={onBack} title={maybe(() => customer.email)} />
+          <PageHeader back={true} title={maybe(() => customer.email)} />
           <div className={classes.root}>
             <div>
               <CustomerDetails
@@ -99,7 +97,7 @@ const CustomerDetailsPage = decorate<CustomerDetailsPageProps>(
             disabled={disabled || !hasChanged}
             state={saveButtonBar}
             onSave={submit}
-            onCancel={onBack}
+            onCancel={reset}
             onDelete={onDelete}
           />
         </Container>

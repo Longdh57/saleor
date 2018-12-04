@@ -9,7 +9,6 @@ import Decorator from "../../Decorator";
 const props: CollectionCreatePageProps = {
   disabled: false,
   errors: [],
-  onBack: () => undefined,
   onSubmit: () => undefined,
   saveButtonBarState: "default"
 };

@@ -15,7 +15,6 @@ const props: CustomerCreatePageProps = {
   ],
   disabled: false,
   errors: [],
-  onBack: () => undefined,
   onSubmit: () => undefined,
   saveButtonBar: "default"
 };

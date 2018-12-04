@@ -26,7 +26,6 @@ interface ProductImagePageProps {
   }>;
   disabled: boolean;
   saveButtonBarState: ConfirmButtonTransitionState;
-  onBack: () => void;
   onDelete: () => void;
   onRowClick: (id: string) => () => void;
   onSubmit: (data: { description: string }) => void;
@@ -59,7 +58,6 @@ const ProductImagePage = decorate<ProductImagePageProps>(
     image,
     images,
     saveButtonBarState,
-    onBack,
     onDelete,
     onRowClick,
     onSubmit
@@ -69,10 +67,10 @@ const ProductImagePage = decorate<ProductImagePageProps>(
       onSubmit={onSubmit}
       key={image ? image.alt : "loading"}
     >
-      {({ change, data, hasChanged, submit }) => {
+      {({ change, data, hasChanged, reset, submit }) => {
         return (
           <Container width="md">
-            <PageHeader title={i18n.t("Edit Photo")} onBack={onBack} />
+            <PageHeader title={i18n.t("Edit Photo")} back={true} />
             <div className={classes.root}>
               <div>
                 <ProductImageNavigation
@@ -115,7 +113,7 @@ const ProductImagePage = decorate<ProductImagePageProps>(
             <SaveButtonBar
               disabled={disabled || !onSubmit || !hasChanged}
               state={saveButtonBarState}
-              onCancel={onBack}
+              onCancel={reset}
               onDelete={onDelete}
               onSave={submit}
             />

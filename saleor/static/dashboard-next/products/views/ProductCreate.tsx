@@ -10,7 +10,7 @@ import ProductCreatePage from "../components/ProductCreatePage";
 import { TypedProductCreateMutation } from "../mutations";
 import { TypedProductCreateQuery } from "../queries";
 import { ProductCreate } from "../types/ProductCreate";
-import { productListUrl, productUrl } from "../urls";
+import { productUrl } from "../urls";
 
 interface ProductUpdateProps {
   id: string;
@@ -27,7 +27,6 @@ export const ProductUpdate: React.StatelessComponent<
             <Navigator>
               {navigate => {
                 const handleAttributesEdit = undefined;
-                const handleBack = () => navigate(productListUrl());
 
                 return (
                   <TypedProductCreateQuery displayLoader>
@@ -115,7 +114,6 @@ export const ProductUpdate: React.StatelessComponent<
                                       : undefined
                                   }
                                   onAttributesEdit={handleAttributesEdit}
-                                  onBack={handleBack}
                                   onSubmit={handleSubmit}
                                   saveButtonBarState={formTransitionState}
                                 />

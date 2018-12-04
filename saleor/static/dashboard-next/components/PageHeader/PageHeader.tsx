@@ -16,16 +16,16 @@ const decorate = withStyles(
 );
 
 interface PageHeaderProps {
+  back: boolean;
   className?: string;
   title?: string;
-  onBack?();
 }
 
 const PageHeader = decorate<PageHeaderProps>(
-  ({ children, classes, className, onBack, title }) => (
+  ({ back, children, classes, className, title }) => (
     <ExtendedPageHeader
+      back={back}
       className={className}
-      onBack={onBack}
       title={
         <Typography className={classes.title} variant="title">
           {title !== undefined ? title : <Skeleton style={{ width: "10em" }} />}

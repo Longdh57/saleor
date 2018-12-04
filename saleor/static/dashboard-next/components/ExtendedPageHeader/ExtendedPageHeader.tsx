@@ -35,19 +35,19 @@ const decorate = withStyles(theme => ({
 }));
 
 interface ExtendedPageHeaderProps {
+  back?: boolean;
   className?: string;
   title?: React.ReactNode;
-  onBack?();
 }
 
 const ExtendedPageHeader = decorate<ExtendedPageHeaderProps>(
-  ({ children, classes, className, onBack, title }) => (
+  ({ back, children, classes, className, title }) => (
     <div className={classNames(classes.root, className)}>
-      {onBack && (
+      {back && (
         <IconButton
           color="inherit"
           className={classes.menuButton}
-          onClick={onBack}
+          onClick={window.history.back}
         >
           <ArrowBackIcon />
         </IconButton>
